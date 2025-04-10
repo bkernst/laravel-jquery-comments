@@ -1,0 +1,286 @@
+body {
+    background-color: white;
+    color: black;
+    font-family: Lato, "Helvetica", sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+p {
+    padding: 0 0 0.5rem 0;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    border-radius: 0.5rem;
+    border: 1px solid silver;
+    margin: 1rem 0 0 0;
+    padding: 0.5rem 1rem;
+}
+
+label {
+    display: block;
+}
+
+input, textarea {
+    border-radius: 0.5rem;
+    border: 1px solid silver;
+    max-height: 300px;
+    max-width: 400px;
+    min-width: 250px;
+    padding: 0.5rem 0.85rem;
+}
+
+textarea {
+    min-height: 100px;
+}
+
+.header {
+    background-color: #F0F0F0;
+    margin-bottom: 1rem;
+    position: sticky;
+    top: 0;
+}
+
+.footer {
+    background-color: #F0F0F0;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.footer a {
+    color: black;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: gray;
+    text-decoration: none;
+}
+
+.button {
+    background-color: blue;
+    border-radius: 1rem;
+    color: white;
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+}
+
+.button-approve {
+    background-color: green;
+}
+
+.button-reject {
+    background-color: orange;
+}
+
+.button-delete {
+    background-color: red;
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mt-0 {
+    margin-top: 0;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+.pl-0 {
+    padding-left: 0;
+}
+
+.pr-1 {
+    padding-right: 1rem;
+}
+
+.pb-0 {
+    padding-bottom: 0;
+}
+
+.pb-1 {
+    padding-bottom: 1rem;
+}
+
+.pt-0 {
+    padding-top: 0;
+}
+
+.pt-1 {
+    padding-top: 1rem;
+}
+
+.center-holder {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1024px;
+    min-width: 640px;
+    padding: 0 2rem;
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.comment-text {
+    background-color: #F0F0F0;
+    padding: 0.25rem;
+}
+
+.notification-bar, .error-bar {
+    color: white;
+    display: none;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1001;
+
+    &.open {
+        display: flex;
+    }
+}
+
+.notification-bar {
+    background-color: green;
+}
+
+.error-bar {
+    background-color: red;
+}
+
+.overlay {
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    background-color: rgba(0, 0, 0, 0.15);
+    display: none;
+    height: 100%;
+    padding: 100px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+
+    &.open{
+        display: flex;
+    }
+}
+
+.popup {
+    align-items: center;
+    bottom: 0;
+    display: none;
+    height: 100%;
+    height: 100dvh;
+    justify-content: center;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    width: 100dvw;
+    z-index: 1000;
+
+    &.open {
+        display: flex;
+    }
+}
+
+.popup-modal {
+    background-color: white;
+    border-radius: 1rem;
+    border: 1px solid black;
+    box-shadow: 0 4px 2px -2px gray;
+    height: fit-content;
+    max-height: 100dvh;
+    max-width: 100dvw;
+    min-height: 100px;
+    min-width: 100px;
+    padding: 2rem;
+    position: fixed;
+    width: fit-content;
+}
+
+.popup-header {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    min-height: 34px;
+    position: relative;
+    text-align: left;
+    width: 100%;
+}
+
+.popup-content {
+    overflow: auto;
+    text-align: left;
+}
+
+.close-lightbox {
+    align-items: center;
+    background-color: #FF4C4C;
+    border-radius: 10px;
+    border: 1px solid #D40D0D;
+    box-shadow: 0 1px 1px 0 #D40D0D;
+    cursor: pointer;
+    display: flex;
+    float: right;
+    height: 30px;
+    justify-content: center;
+    width: 30px;
+
+    span {
+        background-image: url('/icons/close-white.svg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        display: block;
+        height: 12px;
+        width: 12px;
+    }
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.notification {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+
+.hide {
+    display: none;
+}
+
+form .error {
+    font-size: 0.8rem;
+}
