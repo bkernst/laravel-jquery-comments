@@ -41,6 +41,16 @@ class CommentController extends Controller
         return CommentCMSResource::collection($this->commentService->all());
     }
 
+    public function changed(Request $request): JsonResource
+    {
+        return CommentResource::collection($this->commentService->changed());
+    }
+
+    public function changed_cms(Request $request): JsonResource
+    {
+        return CommentResource::collection($this->commentService->changed());
+    }
+
     public function reply(Request $request): JsonResource
     {
         $comment = $this->commentService->create($request->toArray());
@@ -51,7 +61,7 @@ class CommentController extends Controller
     public function delete(Request $request): JsonResource
     {
         $data = $request->toArray();
-        $deleteResult = $this->commentService->delete((int) $data['id']);
+        $deleteResult = $this->commentService->softDelete((int) $data['id']);
 
         return new JsonResource($deleteResult);
     }

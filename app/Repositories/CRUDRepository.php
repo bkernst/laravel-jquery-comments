@@ -109,6 +109,17 @@ class CRUDRepository implements CRUDInterface
         }
     }
 
+    public function softDelete(int $id): void
+    {
+        $model = $this->model->find($id);
+        if ($model) {
+            $data = [
+                'deleted' => 1,
+            ];
+            $model->update($data);
+        }
+    }
+
     /**
      * @param  array<int, mixed>  $queryModifiers
      */

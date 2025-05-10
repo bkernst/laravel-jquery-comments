@@ -44,6 +44,8 @@ interface CRUDInterface
 
     public function delete(int $id): void;
 
+    public function softDelete(int $id): void;
+
     /**
      * @param  array<int, mixed>  $queryModifiers
      */

@@ -18,4 +18,9 @@ class CommentRepository extends CRUDRepository implements CommentInterface
     {
         return $this->model->get();
     }
+
+    public function softDelete(int $id): void    
+    {
+        $this->model->softDelete($id);
+    }
 }

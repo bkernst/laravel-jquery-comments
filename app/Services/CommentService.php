@@ -25,19 +25,29 @@ final class CommentService /* implements CommentInterface */
         return CommentResource::collection($comments);
     }
 
+    public function changed(): JsonResource
+    {
+        $pastDate = date('Y-m-d H:i:s', strtotime('-5 seconds'));
+        $comments = $this->commentInterface->all(["(created_at >= '{$pastDate}' OR updated_at >= '{$pastDate}')"]);
+
+        return CommentResource::collection($comments);
+    }
+
     public function create(array $data = []): Comment
     {
         // Top level has to be null because of foreign key reference
         if ($data['parent_id'] === '0') {
             $data['parent_id'] = null;
         }
+        $data['created_at'] = date('Y-m-d H:i:s');
+        $data['updated_at'] = $data['created_at'];
 
         return $this->commentRepository->create($data);
     }
 
-    public function delete(int $id): array
+    public function softDelete(int $id): array
     {
-        $this->commentRepository->delete($id);
+        $this->commentRepository->softDelete($id);
 
         return [];
     }
