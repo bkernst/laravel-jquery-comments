@@ -70,7 +70,34 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function(response) {
-                        renderComments(response.data);
+                        renderComments(response.data, true);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(status, error);
+                        showError(error);
+                        if (xhr.status === 401) {
+                            window.location.href = '/';
+                        }
+                    },
+                    complete: function() {
+                        apiCallInProgress = false;
+                    }
+                });
+            }
+
+            function getChangedComments() {
+                if (apiCallInProgress) {
+                    return false;
+                }
+                apiCallInProgress = true;
+                $.ajax({
+                    url: '/api/cms/changed',
+                    type: 'GET',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        renderComments(response.data, false);
                     },
                     error: function(xhr, status, error) {
                         console.error(status, error);
@@ -143,7 +170,7 @@
                         },
                         complete: function() {
                             apiCallInProgress = false;
-                            getAllComments();
+                            getChangedComments();
                         }
                     });
                 });
@@ -160,7 +187,7 @@
                 $('#comments').empty();
                 getAllComments();
                 let timer = setInterval(function() {
-                    getAllComments();
+                    getChangedComments();
                 }, 5000);
             });
         </script>
